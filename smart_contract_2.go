@@ -180,7 +180,7 @@ func (t *SimpleChaincode) validate(stub shim.ChaincodeStubInterface, args []stri
     //parameters productid,contractkey,bytearray
     //data := `{"product_id":"IOT1124s","Contractid":"232241123","stake_holders":["Saurabh_id123","Vinit_Ajay123"],"sensor_value":"24","payment_percent":"20"}`
 	
-	StateJsonAsbytes := []byte(args[0])
+	/*StateJsonAsbytes := []byte(args[0])
 	contractkey :=  args[1]
 	//productid := args[2]
 
@@ -209,9 +209,6 @@ func (t *SimpleChaincode) validate(stub shim.ChaincodeStubInterface, args []stri
 
 	    state_json := g.(map[string]interface{})
 
-
-	    {}
-
 	    // The Key value iteration can be done better for dynamicity as a seperate function. to loop over the two structs. 
 
         var sensor_value,sensor_contract string 
@@ -239,9 +236,9 @@ func (t *SimpleChaincode) validate(stub shim.ChaincodeStubInterface, args []stri
         val1,_ := strconv.Atoi(sensor_value)
         val2,_ := strconv.Atoi(sensor_contract)
 
-        var exception string
+        var exception string*/
 
-        if ( val1 < val2 ) {
+        if ( 5 < 4 ) {
               exception = `{"result":"Exception: value Not acceptable","status":"failed"}`
         }else{
               exception = `{"result":"Success","status":"success"}`
