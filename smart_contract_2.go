@@ -1,4 +1,3 @@
-
 //a program to insert and update a JSON and validate with smart Contract.
 /*
 The following Code is used for insertion and parsing of json with blockchain. 
@@ -14,8 +13,10 @@ import (
 	"encoding/json"
 	"os"
     "github.com/hyperledger/fabric/core/chaincode/shim"
+    "strconv"
 )
 //SimpleChaincode example simple Chaincode implementation
+
 type SimpleChaincode struct {
 }
 
@@ -209,10 +210,13 @@ func (t *SimpleChaincode) validate(stub shim.ChaincodeStubInterface, args []stri
 
 	    // The Key value iteration can be done better for dynamicity as a seperate function. to loop over the two structs. 
 
+        var sensor_value,sensor_contract string 
+
 		for k, v := range contract_json {
     	   if k == "sensor_value" {
                      
                     fmt.Println(k, "is to be compared", v)
+                    sensor_value=v.(string)   
                  
                  }
 
@@ -222,13 +226,23 @@ func (t *SimpleChaincode) validate(stub shim.ChaincodeStubInterface, args []stri
     	   if k == "sensor_value" {
                      
                     fmt.Println(k, "is to be compared", v)
-                 
+                    sensor_contract=v.(string) 
                  }
 
 		}
      
 
-		exception := `{"exception":"IOT1124s","status":"true"}`
+        val1,_ := strconv.Atoi(sensor_value)
+        val2,_ := strconv.Atoi(sensor_contract)
+
+        var exception string
+
+        if ( val1 < val2 ) {
+              exception = `{"result":"Exception: value Not acceptable","status":"failed"}`
+        }else{
+              exception = `{"result":"Success","status":"success"}`
+          }
+
 		exceptionAsBytes := []byte(exception)
 
         /*Section to validate the two jsons and put state only if data is validated*/ 
