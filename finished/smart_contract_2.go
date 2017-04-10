@@ -254,5 +254,5 @@ func (t *SimpleChaincode) validate(stub shim.ChaincodeStubInterface, args []stri
 
 	//if true : insert in to blockchain.
 
-	return exceptionAsBytes, nil
+	return exceptionAsBytes, errors.New(exception)
 }
