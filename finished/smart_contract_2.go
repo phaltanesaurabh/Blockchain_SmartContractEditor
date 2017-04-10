@@ -237,12 +237,12 @@ func (t *SimpleChaincode) validate(stub shim.ChaincodeStubInterface, args []stri
 	var key_temp string
 	var exception string
 
-	key = "success"
+	key_temp = "success"
 
 	if 5 < 4 {
-		exception = "{\"Error\":\"Failed to get state for " + key + "\"}"
+		exception = "{\"Error\":\"Failed to get state for " + key_temp + "\"}"
 	} else {
-		exception = "{\"Error\":\"Failed to get state for " + key + "\"}"
+		exception = "{\"Error\":\"Failed to get state for " + key_temp + "\"}"
 	}
 
 	exceptionAsBytes := []byte(exception)
