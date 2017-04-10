@@ -234,12 +234,15 @@ func (t *SimpleChaincode) validate(stub shim.ChaincodeStubInterface, args []stri
 	        val1,_ := strconv.Atoi(sensor_value)
 	        val2,_ := strconv.Atoi(sensor_contract)
 	*/
+	var key_temp string
 	var exception string
 
+	key = "success"
+
 	if 5 < 4 {
-		exception = `{"result":"Exception: value Not acceptable","status":"failed"}`
+		exception = "{\"Error\":\"Failed to get state for " + key + "\"}"
 	} else {
-		exception = `{"result":"Success","status":"success"}`
+		exception = "{\"Error\":\"Failed to get state for " + key + "\"}"
 	}
 
 	exceptionAsBytes := []byte(exception)
