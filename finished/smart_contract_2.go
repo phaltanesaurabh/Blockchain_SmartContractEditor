@@ -245,7 +245,7 @@ func (t *SimpleChaincode) validate(stub shim.ChaincodeStubInterface, args []stri
 		exception = "{\"Error\":\"Failed to get state for " + key_temp + "\"}"
 	}
 
-	exceptionAsBytes := []byte(exception)
+	//	exceptionAsBytes := []byte(exception)
 
 	/*Section to validate the two jsons and put state only if data is validated*/
 
@@ -257,5 +257,5 @@ func (t *SimpleChaincode) validate(stub shim.ChaincodeStubInterface, args []stri
 
 	//if true : insert in to blockchain.
 
-	return exceptionAsBytes, errors.New(exception)
+	return nil, errors.New(exception)
 }
