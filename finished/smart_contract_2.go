@@ -63,8 +63,6 @@ func (t *SimpleChaincode) Invoke(stub shim.ChaincodeStubInterface, function stri
 		return t.write(stub, args)
 	} else if function == "putcontract" {
 		return t.putcontract(stub, args)
-	} else if function == "validate" {
-		return t.validate(stub, args)
 	}
 
 	fmt.Println("invoke did not find func: " + function)
@@ -81,6 +79,8 @@ func (t *SimpleChaincode) Query(stub shim.ChaincodeStubInterface, function strin
 		return t.read(stub, args)
 	} else if function == "getcontract" {
 		return t.getcontract(stub, args)
+	} else if function == "validate" {
+		return t.validate(stub, args)
 	}
 
 	fmt.Println("query did not find func: " + function)
