@@ -124,6 +124,62 @@ func (t *SimpleChaincode) write(stub shim.ChaincodeStubInterface, args []string)
 	return nil, nil
 }
 
+// write - invoke function to write key/value pair
+func (t *SimpleChaincode) putstate(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
+	var key, value string
+	var err error
+	fmt.Println("running putstate()")
+
+//Checking the number of arguments to be : inorder -> productId , product state json
+	if len(args) != 2 {
+		return nil, errors.New("Incorrect number of arguments. Expecting 2. name of the key and value to set")
+	}
+
+//Fetch the latest state using the product id.
+
+//Insert 
+
+	statekey := args[0] //rename for funsies
+	//statevalue := args[1]
+	err = stub.PutState(key, []byte(value)) //write the variable into the chaincode state
+	if err != nil {
+		return nil, err
+	}
+
+	ProductTraceAsbytes, err := stub.GetState(statekey)
+	if err != nil {
+		jsonResp := "{\"Error\":\"Failed to get ProductTrace for  " + statekey + "\"}"
+
+		return nil, errors.New(jsonResp)
+	}
+
+    var f interface{}     //Interface for marshalling the data received from blockchain contract used for comparison
+
+		err_contract := json.Unmarshal(ProductTraceAsbytes, &f)
+		if (err_contract!=nil) {
+			os.Exit(1)
+		}
+
+        var ouputAsBytes []byte
+        producttrace_struct := f.(map[string]interface{})
+
+		for k, v := range producttrace_struct {
+    	   if k == "states" {
+                     
+                 //  fmt.Println(k, "is to be compared", v)
+                    states_values:=v.(interface{})  
+
+                    output,_:=json.Marshal(states_values)
+                    ouputAsBytes=[]byte(output)
+
+                 }
+
+		}
+
+   return ouputAsBytes, nil
+}
+
+
 // getcontract - Get the smart Contract from the blockchain as bytearray
 func (t *SimpleChaincode) getcontract(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
 	var key, jsonResp string
@@ -165,7 +221,6 @@ func (t *SimpleChaincode) read(stub shim.ChaincodeStubInterface, args []string) 
 
 	return valAsbytes, nil
 }
-
 
 // read - query function to read key/value pair
 func (t *SimpleChaincode) validate(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {

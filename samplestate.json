@@ -1,0 +1,49 @@
+{
+  "productId": "1324",
+  "productName": "ABCD",
+  "description": "Product Description",
+  "category": "Category A",
+  "qrCode": "243eewfr234",
+  "states": [
+    {
+      "text": "sdffsfsf",
+      "lat": "37.335719",
+      "lang": "-121.886708",
+      "address": "101 E San Fernando St #103, San Jose, CA, 95112",
+      "tests": [
+        {
+          "objective": "Check if the packing is intact",
+          "expectedResult": "It is intact",
+          "actualResult": "It isn't",
+          "status": "VERIFIED"
+        },
+        {
+          "objective": "Check if the packing is intact",
+          "expectedResult": "It is intact",
+          "actualResult": "It isn't",
+          "status": "VERIFIED"
+        }
+      ]
+    },
+    {
+      "text": "sdffsfsf",
+      "lat": "37.335719",
+      "lang": "-121.886708",
+      "address": "101 E San Fernando St #103, San Jose, CA, 95112",
+      "tests": [
+        {
+          "objective": "Check if the packing is intact",
+          "expectedResult": "It is intact",
+          "actualResult": "It isn't",
+          "status": "VERIFIED"
+        },
+        {
+          "objective": "Check if the packing is intact",
+          "expectedResult": "It is intact",
+          "actualResult": "It isn't",
+          "status": "VERIFIED"
+        }
+      ]
+    }
+  ]
+}
