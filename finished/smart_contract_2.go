@@ -129,7 +129,7 @@ func (t *SimpleChaincode) write(stub shim.ChaincodeStubInterface, args []string)
 
 // write - invoke function to write key/value pair
 func (t *SimpleChaincode) statequery(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
-	var key, value string
+	//var key, value string
 	var err error
 	fmt.Println("running statequery()")
 
@@ -144,10 +144,6 @@ func (t *SimpleChaincode) statequery(stub shim.ChaincodeStubInterface, args []st
 
 	statekey := args[0] //rename for funsies
 	//statevalue := args[1]
-	err = stub.PutState(key, []byte(value)) //write the variable into the chaincode state
-	if err != nil {
-		return nil, err
-	}
 
 	ProductTraceAsbytes, err := stub.GetState(statekey)
 	if err != nil {
