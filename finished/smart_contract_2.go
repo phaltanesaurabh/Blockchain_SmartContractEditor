@@ -80,7 +80,7 @@ func (t *SimpleChaincode) Query(stub shim.ChaincodeStubInterface, function strin
         return t.getcontract(stub, args) 
 	}else if function == "validate"{
         return t.validate(stub, args) 
-	}else if function == "putstate"{
+	}else if function == "statequery"{
 		return t.putcontract(stub, args)
 	}
 
@@ -128,10 +128,10 @@ func (t *SimpleChaincode) write(stub shim.ChaincodeStubInterface, args []string)
 }
 
 // write - invoke function to write key/value pair
-func (t *SimpleChaincode) putstate(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
+func (t *SimpleChaincode) statequery(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
 	var key, value string
 	var err error
-	fmt.Println("running putstate()")
+	fmt.Println("running statequery()")
 
 //Checking the number of arguments to be : inorder -> productId , product state json
 	if len(args) != 2 {
