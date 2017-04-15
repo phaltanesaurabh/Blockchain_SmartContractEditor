@@ -81,7 +81,7 @@ func (t *SimpleChaincode) Query(stub shim.ChaincodeStubInterface, function strin
 	}else if function == "validate"{
         return t.validate(stub, args) 
 	}else if function == "statequery"{
-		return t.putcontract(stub, args)
+		return t.statequery(stub, args)
 	}
 
 	fmt.Println("query did not find func: " + function)
