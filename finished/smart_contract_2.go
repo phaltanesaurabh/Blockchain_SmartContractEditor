@@ -63,6 +63,7 @@ func (t *SimpleChaincode) Invoke(stub shim.ChaincodeStubInterface, function stri
 		return t.putcontract(stub, args)
 	}
 
+
 	fmt.Println("invoke did not find func: " + function)
 
 	return nil, errors.New("Received unknown function invocation: " + function)
@@ -79,6 +80,8 @@ func (t *SimpleChaincode) Query(stub shim.ChaincodeStubInterface, function strin
         return t.getcontract(stub, args) 
 	}else if function == "validate"{
         return t.validate(stub, args) 
+	}else if function == "putstate"{
+		return t.putcontract(stub, args)
 	}
 
 	fmt.Println("query did not find func: " + function)
